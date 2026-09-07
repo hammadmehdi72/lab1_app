@@ -39,11 +39,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int count = 0;
+  int _counter = 0;
 
   void _incrementCounter() {
     setState(() {
-      count++;
+      _counter++;
     });
   }
 
@@ -59,7 +59,25 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text('You have pushed the button this many times:'),
-            Text('$count', style: Theme.of(context).textTheme.headlineMedium),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  '$_counter',
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
+                const SizedBox(width: 8),
+                const Icon(Icons.star, color: Colors.amber),
+              ],
+            ),
+            const Text(
+              'Keep tapping!',
+              style: TextStyle(
+                fontSize: 18,
+                fontStyle: FontStyle.italic,
+                color: Colors.grey,
+              ),
+            ),
           ],
         ),
       ),
