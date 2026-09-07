@@ -39,15 +39,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  // This value can change, so it belongs in the State class.
   int _counter = 0;
 
   void _incrementCounter() {
+    // setState tells Flutter to rebuild the screen after the value changes.
     setState(() {
       _counter++;
     });
   }
 
   void _decrementCounter() {
+    // This is a separate function so the minus button has its own action.
     setState(() {
       _counter--;
     });
@@ -65,6 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text('You have pushed the button this many times:'),
+            // Row puts the counter number and icon side by side.
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -72,10 +76,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   '$_counter',
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
+                // Adds a small gap between the number and the icon.
                 const SizedBox(width: 8),
                 const Icon(Icons.star, color: Colors.amber),
               ],
             ),
+            // This text has a different style from the other text widgets.
             const Text(
               'Keep tapping!',
               style: TextStyle(
@@ -87,6 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+      // A Row allows both floating buttons to be visible at the same time.
       floatingActionButton: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
