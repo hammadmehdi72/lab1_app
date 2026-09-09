@@ -39,19 +39,23 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // This value can change, so it belongs in the State class.
+  // Stores the current counter value displayed in the middle of the screen.
+  // It is mutable, so it belongs in the State class instead of the widget.
   int _counter = 0;
 
+  // Increases the counter when the plus button is pressed.
   void _incrementCounter() {
-    // setState tells Flutter to rebuild the screen after the value changes.
+    // setState tells Flutter that the value changed and the screen must rebuild.
     setState(() {
+      // The ++ operator adds one to the current counter value.
       _counter++;
     });
   }
 
+  // Decreases the counter when the minus button is pressed.
   void _decrementCounter() {
-    // This is a separate function so the minus button has its own action.
     setState(() {
+      // The -- operator subtracts one from the current counter value.
       _counter--;
     });
   }
@@ -65,25 +69,31 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Column(
+          // Places the column's children in the vertical center of the screen.
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // Gives the user context for the number shown below.
             const Text('You have pushed the button this many times:'),
-            // Row puts the counter number and icon side by side.
+            // Row places the counter number and the star icon side by side.
             Row(
+              // Centers both children horizontally inside the row.
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                // Converts the current counter value to text for display.
                 Text(
                   '$_counter',
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
-                // Adds a small gap between the number and the icon.
+                // Adds space so the number and icon do not touch.
                 const SizedBox(width: 8),
+                // Adds a visual star beside the counter value.
                 const Icon(Icons.star, color: Colors.amber),
               ],
             ),
-            // This text has a different style from the other text widgets.
+            // Provides an instruction below the counter using a custom style.
             const Text(
               'Keep tapping!',
+              // Makes this instruction larger, italic, and gray.
               style: TextStyle(
                 fontSize: 18,
                 fontStyle: FontStyle.italic,
@@ -93,19 +103,27 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      // A Row allows both floating buttons to be visible at the same time.
+      // A row allows the decrement and increment buttons to appear together.
       floatingActionButton: Row(
+        // Keeps the row as small as its two buttons require.
         mainAxisSize: MainAxisSize.min,
         children: [
           FloatingActionButton(
+            // Connects the minus button to the decrement method.
             onPressed: _decrementCounter,
+            // Describes the button for accessibility and long-press hints.
             tooltip: 'Decrement',
+            // Displays the minus symbol inside the button.
             child: const Icon(Icons.remove),
           ),
+          // Separates the two floating action buttons.
           const SizedBox(width: 12),
           FloatingActionButton(
+            // Connects the plus button to the increment method.
             onPressed: _incrementCounter,
+            // Describes the button for accessibility and long-press hints.
             tooltip: 'Increment',
+            // Displays the plus symbol inside the button.
             child: const Icon(Icons.add),
           ),
         ],
